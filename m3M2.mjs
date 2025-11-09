@@ -11,12 +11,19 @@ import{stdin as input, stdout as output} from 'node:process';
 const userInput = readline.createInterface({input, output});
 
 let hoogte = 1;
-let ster = '*'
-
 while (hoogte <= 4) {
-   console.log(ster = hoogte * ster)
-    hoogte ++
+    let sterRegel =""
+    let somSterren = 0
+     while(somSterren < hoogte){
+         sterRegel +="*"
+         
+somSterren++
+       
+}
+ hoogte++
+console.log(sterRegel)
+    
 }
 
 
-process.exit();
+userInput.close();
