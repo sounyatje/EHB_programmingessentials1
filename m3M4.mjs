@@ -1,0 +1,20 @@
+// M4: FizzBuzz
+// Maak een applicatie dat alle getallen tussen 1 en 100 afprint. 
+// Maar voor getallen deelbaar door 3 print je "Fizz" af, 
+// voor getallen deelbaar door 5 print je "Buzz" af en voor getallen deelbaar door 3 en 5 print je "FizzBuzz" af.
+
+
+
+for(let i = 1; i<=100; i++){
+if (i % 3 === 0 && i % 5 ===0)
+   console.log("fizzbuzz")
+
+ else if (i % 3 ===0) {
+   console.log("fizz");
+
+} else if (i % 5 ===0) {
+    console.log("buzz");
+} else {
+    console.log(i);
+}
+}
