@@ -12,22 +12,17 @@ import * as readline from 'node:readline/promises';
 import{stdin as input, stdout as output} from 'node:process';
 const userInput = readline.createInterface({input, output});
 
-let hoogte = 1;
-while (hoogte <= 5){
-    let sterRegel =""
-    let somSterren = 0
-     while(somSterren < hoogte){
-         sterRegel +="*"
-        if ( hoogte === 4) {
-            somSterren--
-        }
-somSterren++
-       
+let spaties = " "
+for (let j = 0; j < spaties; j++) {
+    regel += " ";
 }
- hoogte++
-console.log(sterRegel)
-    
+
+let regel = "";
+for (let j = 0; j < 5; j++) {
+    regel += "*";
 }
+console.log(regel)
+
 
 
 userInput.close();
