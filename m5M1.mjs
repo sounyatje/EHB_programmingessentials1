@@ -18,7 +18,7 @@ const userInput = readline.createInterface({input, output});
 function random(min, max) {
    let randomGetal  = Math.floor(Math.random() * (max - min + 1)) + min;
    do { 
-    let getal = parseFloat(await userInput.question('Geef een getal in:'));
+    // let getal = parseFloat(await userInput.question('Geef een getal in:'));
  if (getal === randomGetal){
     console.log("juist geraden") }
     else if (getal>randomGetal){
