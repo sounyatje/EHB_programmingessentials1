@@ -1,3 +1,7 @@
+// H1: Highscore
+// Schrijf een script dat 5 getallen inleest. 
+// Toon na het inlezen wat het hoogste getal, het laagste getal en het gemiddelde is.
+
 import readline from 'readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
 

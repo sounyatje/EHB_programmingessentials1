@@ -1,4 +1,7 @@
-import readline from 'readline/promises';
+// E3: Dagen in de maand
+// Gebruik een switch/case om te controleren hoeveel dagen de variabele maand heeft.
+// import readline from 'readline/promises';
+
 import { stdin as input, stdout as output } from 'node:process';
 
 

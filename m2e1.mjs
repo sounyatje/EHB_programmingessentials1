@@ -1,3 +1,7 @@
+// E1: Even of oneven
+// Vraag een getal aan de gebruiker. Controleer of dit getal even of oneven is (met behulp van de restoperator %). 
+// Print even of oneven af naar de gebruiker.
+
 import readline from 'readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
 

@@ -14,11 +14,15 @@ import * as readline from 'node:readline/promises';
 import{stdin as input, stdout as output} from 'node:process';
 const userInput = readline.createInterface({input, output});
 
-
 function random(min, max) {
-   let randomGetal  = Math.floor(Math.random() * (max - min + 1)) + min;
-   do { 
-    // let getal = parseFloat(await userInput.question('Geef een getal in:'));
+   return Math.floor(Math.random() * (max - min + 1)) + min;
+ }
+
+   
+   let randomGetal = random(1,10)
+
+   let getal
+   do {  getal = parseFloat(await userInput.question('Geef een getal tussen 1 en 10 in:'));
  if (getal === randomGetal){
     console.log("juist geraden") }
     else if (getal>randomGetal){
@@ -28,10 +32,7 @@ function random(min, max) {
     }
 
      } while (randomGetal !== getal)
-    
-    return randomGetal
- }
 
- random (1,10)
+    //levens?
 
 userInput.close();

@@ -104,3 +104,15 @@ Résumé des erreurs et corrections pour l'exercice "Honden" :
 - Pour appliquer une action à tous les éléments d’un tableau, il faut boucler.
 - for...of est pratique et lisible pour parcourir tous les objets et utiliser leurs méthodes.
 */
+
+
+// function createHond(naam, leeftijd, isSpeels) {     
+//     return {         naam: naam,         leeftijd: leeftijd,         isSpeels: isSpeels,         
+//         toString: function() {             let niet = "";             if(!this.isSpeels) niet = "niet ";            
+//              return `Hallo, ik ben ${this.naam}. Ik ben ${this.leeftijd} jaar oud en ik ben ${niet}speels.`;         }     } }  
+//              const hond1 = createHond("bobbie", 5, true); console.log(hond1.toString()); 
+//              const hond2 = createHond("snoopy", 8, false); console.log(hond2.toString());  
+//              const honden= []; for (let i = 0; i < 10; i++) 
+//                 {     let naam = ...;     let leeftijd = ...;     let isSpeels = ...;    
+//                      honden.push(createHond(naam, leeftijd, isSpeels)); }
+ 
