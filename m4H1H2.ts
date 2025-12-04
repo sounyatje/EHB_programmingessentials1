@@ -15,17 +15,34 @@
 
 import * as readline from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
-
+let scoreComputer: number = 0
+    let scoreGamer: number = 0
 async function main() {
   const userInput = readline.createInterface({ input, output });
 
-  const choices = ['rock', 'paper', 'scissors'];
+  const choices:(string)[] = ["rock", "paper", "scissors"];
+  
+  
+  do{
+    
   const computerChoice = choices[Math.floor(Math.random() * choices.length)];
-  const gamerChoice = await userInput.question(
-    'maak een keuze: paper - rock - scissors: '
-  );
+  const gamerChoice:string = await userInput.question(
+    'maak een keuze: paper - rock - scissors: ');
 
+if((gamerChoice === "rock" && computerChoice === "scissors")||
+(gamerChoice === "scissors" && computerChoice ==="paper")||
+(gamerChoice === "paper" && computerChoice === "rock")) {
+    scoreGamer++
+}
+ else if ((computerChoice === "rock" && gamerChoice === "scissors") ||
+ (computerChoice === "scissors" && gamerChoice === "paper") ||
+ (computerChoice === "paper" && gamerChoice ==="rock")) {
+    scoreComputer++
+ } else {
+    console.log("try again")}
   console.log({ gamerChoice, computerChoice });
+  console.log({scoreGamer, scoreComputer})
+  } while (scoreComputer !== 3 || scoreGamer !== 3)
   userInput.close();
 }
 
