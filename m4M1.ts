@@ -6,18 +6,18 @@
 // 333
 // 4444
 
-let nummer : number = 1
+let rij : number = 1
 
-while(nummer < 4) {
-    let space: string = " "
-    let nummer2: number = 1
-    while (nummer2 < 4){
-       nummer2++
-        console.log(nummer2)
-    }
-    console.log(nummer)
-    nummer++
+while(rij <= 4) {
+ let kolom : number = 1
+ let lijn = ""
+ while (kolom <= rij) {
+ 
+lijn = lijn + rij;
+   kolom++
+ }
+ console.log(lijn) 
+   rij++
 }
 
-
- 
+ //⚠️⚠️⚠️
