@@ -42,8 +42,10 @@ if((gamerChoice === "rock" && computerChoice === "scissors")||
     console.log("try again")}
   console.log({ gamerChoice, computerChoice });
   console.log({scoreGamer, scoreComputer})
-  } while (scoreComputer !== 3 || scoreGamer !== 3)
+  console.log("game over")
+  } while (scoreComputer !== 3 && scoreGamer !== 3)
   userInput.close();
 }
+
 
 main();

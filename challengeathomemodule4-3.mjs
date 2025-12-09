@@ -1,0 +1,2 @@
+// @3: Diamandomtrek
+// Zorg ervoor dat je ook je diamand van de vorige oefeningenreeks enkel als omtrek kan laten zien.

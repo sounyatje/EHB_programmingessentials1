@@ -10,6 +10,12 @@
 // Als de gebruiker het juiste getal niét heeft gegokt, 
 // laat dan weten of het hoger of lager moet zijn.
 
+// M2: Hoger/lager v2
+// Zorg ervoor dat de gebruiker kan blijven gokken tot het juiste getal is gevonden.
+
+// M3: Hoger/lager v3
+// Hou het aantal 'levens' bij. De gebruiker kan maar 3 maal gokken voor het Game Over is.
+
 import * as readline from 'node:readline/promises';
 import{stdin as input, stdout as output} from 'node:process';
 const userInput = readline.createInterface({input, output});
