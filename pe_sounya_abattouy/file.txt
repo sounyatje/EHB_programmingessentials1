@@ -1,0 +1,103 @@
+// oefening 1
+import * as readline from 'node:readline/promises';
+import{stdin as input, stdout as output} from 'node:process';
+const userInput = readline.createInterface({input, output});
+
+ let gemiddelde = 0;
+ let getal;
+ let som = 0;
+ let aantalGetallen = 0;
+
+do{
+  getal = parseFloat(await userInput.question('geef een getal in: '));
+ aantalGetallen ++
+
+
+if(getal >= 10 && getal != 42) {
+som =+ getal
+ gemiddelde = som / aantalGetallen
+ console.log(gemiddelde)
+ 
+ }
+} while (getal != 42)
+process.exit();
+// oefening 2
+import * as readline from 'node:readline/promises';
+import{stdin as input, stdout as output} from 'node:process';
+const userInput = readline.createInterface({input, output});
+
+let getal = parseFloat(await userInput.question('hoeveel getallen wil je genereren?'));
+
+function random(min, max) {
+     min = 1;
+     max = 10;
+   let randomGetallen = getal* Math.floor(Math.random() * (max - min + 1)) + min
+   console.log(randomGetallen)
+    return randomGetallen
+   
+}
+random (randomGetallen)
+let som = 0;
+
+if (randomGetallen % 2 !== 0){
+    som += randomGetallen
+    console.log(som)
+}
+
+process.exit();
+
+// oefening 3
+let lijst = [];
+
+// let punt = parseFloat(await userInput.question('geef de punt in'));
+function voegPuntToe(lijst, punt) {
+lijst = []
+punt.push()
+}
+return voegPuntToe
+
+function toonLijst(lijst) {
+console.log(lijst)
+} 
+return toonLijst
+
+function maakLijstLeeg(lijst) {
+lijst.delete()
+console.log(lijst)
+}
+return maakLijstLeeg
+
+lijst = voegPuntToe(lijst, 15);
+lijst = voegPuntToe(lijst, 9);
+lijst = voegPuntToe(lijst, 12);
+
+process.exit();
+
+// oefening 4
+import * as readline from 'node:readline/promises';
+import{stdin as input, stdout as output} from 'node:process';
+const userInput = readline.createInterface({input, output});
+
+
+// let student = [{naam: 'john doe', opleiding: 'toegepaste informatica', geboortedatum:'20/05/2001', vak:'programming essentials'}]
+
+let student = [{}];
+
+let naam = await userInput.question('voer de naam in ');
+let opleiding =  await userInput.question('Voer de opleiding in ');
+let geboortedatum = await userInput.question('Voer de geboortedatum in ');
+let vak;
+
+do { vak = await userInput.question('Voer de vak in van de student ');
+      vak.push()
+   
+} while(vak != 'stop')
+
+
+ naam.push() 
+ opleiding.push ()
+ geboortedatum.push()
+
+   console.log (student)
+
+process.exit();

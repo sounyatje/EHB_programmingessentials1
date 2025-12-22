@@ -128,22 +128,38 @@ const userInput = readline.createInterface({input, output});
 
 
 
-// for (let i = 1; i <= 3; i++) {
-//   let rij = "";
-//   for (let j = 1; j <= 4; j++) {
-//     rij += i * j + " ";
-//   }
-//   console.log(rij);
-// }
-
-
-
-
-
-let number = 5;
-
-for (let i = 1; i < number; i += 2) {
-    let output = '';
-    output += i + ' ';
+for (let i = 1; i <= 3; i++) {
+  let rij = "";
+  for (let j = 1; j <= 4; j++) {
+     rij += i * j + " ";
   }
+   console.log(rij);
+ }
+
+
+// Schrijf een functie die een TV-serie aan de gebruiker gaat vragen. Zorg ervoor dat de return-waarde van deze 
+// functie het volgende terug geeft indien de TV-serie gekend is (vul natuurlijk zelf de juiste locatie in):
+
+// Je gekozen TV-serie vindt plaats in ...
+// Indien de locatie niet gekend zou zijn, return het volgende (en vul ook hier weer de ingegeven TV serie in):
+
+// Sorry, ik weet niet waar de serie ... zich afspeelt
+
+let serie = (await userInput.question('tv serie: '));
+
+function tvSerie(serie, plaats) {
+  if (plaats) {
+    console.log("Je gekozen TV-serie " + serie + " vindt plaats in " + plaats);
+    return "Je gekozen TV-serie " + serie + " vindt plaats in " + plaats;
+  } else {
+    console.log("Sorry, ik weet niet waar de serie " + serie + " zich afspeelt");
+    return "Sorry, ik weet niet waar de serie " + serie + " zich afspeelt";
+  }
+}
+
+
+tvSerie("casadepapel","spanje");
+tvSerie("the simpsons")
+tvSerie("test", undefined)
+
 
