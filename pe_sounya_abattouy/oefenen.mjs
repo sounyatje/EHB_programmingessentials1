@@ -18,3 +18,20 @@ while (i<=4) {
     console.log(space)
     i++
 }
+
+Of
+
+let i = 1;
+
+while (i <= 4) {
+  let j = 1;
+  let rij = "";
+
+  while (j <= i) {
+    rij = rij + j + " ";
+    j++;
+  }
+
+  console.log(rij);
+  i++;
+}

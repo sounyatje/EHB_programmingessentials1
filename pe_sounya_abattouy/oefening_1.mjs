@@ -21,23 +21,24 @@
 import * as readline from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
 const userInput = readline.createInterface({ input, output });
-
-let som = 0;
-let aantalGetallen = 0;
+let som=0
+let aantalGetallen=0;
 let getal;
+ while (getal !== 45){
 
-do {
-  getal = parseFloat(await userInput.question('Geef een getal in: '));
-
-  if (getal <= 10) {
-    som += getal;
+ getal = parseFloat(await userInput.question("geef een getal in: "));
+  
+    if (getal <= 10) {
+          som += getal
     aantalGetallen++;
-  }
+  }else {
+  console.log("Er werden geen getallen <= 10 ingegeven.");
+}
+ 
+ }
 
-} while (getal !== 45);
+let gemiddelde = som/aantalGetallen
+console.log(gemiddelde);
 
-let gemiddelde = som / aantalGetallen;
-
-console.log("Gemiddelde van getallen kleiner of gelijk aan 10: " + gemiddelde);
 
 process.exit();
