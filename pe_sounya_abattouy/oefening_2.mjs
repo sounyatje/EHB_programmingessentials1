@@ -22,24 +22,20 @@ import * as readline from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
 const userInput = readline.createInterface({ input, output });
 
-
 function random(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-let aantal = parseInt(await userInput.question('Hoeveel willekeurige getallen wil je genereren? '));
-
-let aantalEven = 0;
-
-for (let i = 0; i < aantal; i++) {
-    let r = random(1, 10);
-    console.log(r);         // on affiche chaque nombre sur une nouvelle ligne
-
-    if (r % 2 === 0) {      // si le nombre est pair
-        aantalEven++;
+let aantaltegenererenGetallen = parseFloat(await userInput.question("hoeveel getallen wil je genereren?: "));
+let aantalEven=0
+for(let i=0; i< aantaltegenererenGetallen; i++){
+    let r = random(1,10)
+    console.log(r)
+    if(r % 2 ===0){
+   aantalEven++
     }
 }
 
-console.log("Van de gegenereerde getallen zijn er " + aantalEven + " even.");
+console.log(aantalEven)
 
 process.exit();

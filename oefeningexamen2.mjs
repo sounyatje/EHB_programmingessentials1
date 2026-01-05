@@ -27,19 +27,19 @@ for(let i=12;i>=-6;i= i - 3){
 // 5 10 15
 
 for (let i = 1; i <= 5; i += 2) { //i += 2 veut dire i = i + 2, donc les valeurs de i seront: 1, 3, 5
-  let lijn = "";
+  let rij = "";
 
   for (let j = 1; j <= 3; j++) {    
-    lijn += (i * j) + " ";
+    rij += (i * j) + " ";
   }
 
-  console.log(lijn);
+  console.log(rij);
 }
 
 
-// lijn += (i * j) + " "; veut dire:
+// rij += (i * j) + " "; veut dire:
 
-// prends l’ancienne valeur de lijn,
+// prends l’ancienne valeur de rij,
 
 // ajoute le produit i * j,
 
@@ -47,10 +47,10 @@ for (let i = 1; i <= 5; i += 2) { //i += 2 veut dire i = i + 2, donc les valeurs
 
 // Par exemple pour i = 3:
 
-// au début: lijn = ""
+// au début: rij = ""
 
-// j = 1 → lijn = "3 "
+// j = 1 → rij = "3 "
 
-// j = 2 → lijn = "3 6 "
+// j = 2 → rij = "3 6 "
 
-// j = 3 → lijn = "3 6 9 "
+// j = 3 → rij = "3 6 9 "

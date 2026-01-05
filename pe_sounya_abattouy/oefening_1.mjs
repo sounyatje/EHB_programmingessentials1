@@ -23,7 +23,7 @@ import { stdin as input, stdout as output } from 'node:process';
 const userInput = readline.createInterface({ input, output });
 let som=0
 let aantalGetallen=0;
-let getal;
+let getal = parseFloat(await userInput.question("geef een getal in: "));
  while (getal !== 45){
 
  getal = parseFloat(await userInput.question("geef een getal in: "));

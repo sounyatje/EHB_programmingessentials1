@@ -46,15 +46,17 @@ function toonLijst(lijst) {
         console.log('Momenteel is mijn lijst leeg');
     } else {
         console.log('Er staat het volgende op mijn lijstje:');
-        for (let item of lijst) {
-            console.log('- ' + item);
-        }
+         for (let i = 0; i < lijst.length; i++) {
+      console.log(lijst[i]);
+    }
     }
 }
 
 function maakLijstLeeg(lijst) {
-    lijst.length = 0;
-    return lijst;
+    while(lijst.length > 0){
+        lijst.pop()
+    }
+    return lijst
 }
 
 // Test

@@ -14,44 +14,36 @@
 
 // Als je bvb 12% BTW bij een bedrag wilt toevoegen kan dit door het bedrag te vermenigvuldigen met 1.12.
 
-import * as readline from 'node:readline/promises';
-import { stdin as input, stdout as output } from 'node:process';
+import * as readline from "node:readline/promises";
+import { stdin as input, stdout as output } from "node:process";
 const userInput = readline.createInterface({ input, output });
 
-let artikelType = await userInput.question("Welk type artikel? ");
-let prijsEx = parseFloat(await userInput.question("Prijs exclusief BTW: "));
+let artikel = await userInput.question("Geef een artikel in: ");
+let prijsex = parseFloat(await userInput.question("Geef de prijs (excl. BTW) in: "));
 
-function berekenTotaal(type, prijs) {
-    let btw = 0;
+function artikelBTW(artikel, prijs) {
+  let btw = 0;
 
-    switch (type) {
-        case "krant":
-            btw = krant * 1.00
-            break;
+  switch (artikel) {
+    case "krant":
+      btw = 0;       // 0% BTW
+      break;
+    case "voeding":
+    case "medicijnen":
+      btw = 0.06;    // 6% BTW
+      break;
+    case "restaurant":
+      btw = 0.12;    // 12% BTW
+      break;
+    default:         // alle overige types
+      btw = 0.21;    // 21% BTW
+  }
 
-        case "voeding":
-            btw = voeding * 1.06
-            break;
-
-        case "medicijnen":
-            btw = medicijnen * 1.06
-            break;
-
-        case "restaurant":
-            btw = restaurant * 1.12
-            break;
-
-        default:
-            btw = type * 1.21
-            break;
-    }
-
-    // retourneer prijs inclusief btw
-    return prijs * (1 + btw);
+  let totaal = prijs * (1 + btw);
+  return totaal;
 }
 
-let totaal = berekenTotaal(artikelType, prijsEx);
-
+let totaal = artikelBTW(artikel, prijsex);
 console.log("Totaal inclusief BTW:", totaal);
 
-process.exit();
+userInput.close();

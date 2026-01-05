@@ -1,19 +1,13 @@
+// Schrijf een stukje code om onderstaande uitvoer te verkrijgen.
 
-// Oefening 1: Logica (10 punten)
+// 1 2 3
+// 3 6 9
+// 5 10 15
 
-// Maak een script dat aan de gebruiker vraagt hoeveel random getallen hij wil genereren (tussen 1 en 10).
-// Gebruik de volgende snippet in je code om deze random getallen te generen en toon ze aan je gebruiker.
-
-// function random(min, max) {
-//     return Math.floor(Math.random() * (max - min + 1)) + min;
-// }
-
-// Toon op het einde hoeveel van deze getallen even zijn.
-
-// Voorbeelduitvoer: 
-
-// Hoeveel willekeurige getallen wil je genereren? 7
-
-// De gegenereerde willekeurige getallen zijn: 3, 1, 8, 2, 9, 6, 10
-
-// Van de gegenereerde getallen zijn er 4 even.
+for (let i = 1; i<=5; i=i+2){
+    let rij=""
+    for(let j=1; j<=3;j++){
+       rij = rij+(i*j)+" "
+    }
+console.log(rij)
+}
