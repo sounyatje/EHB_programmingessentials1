@@ -29,9 +29,9 @@ function random(min, max) {
 let aantaltegenererenGetallen = parseFloat(await userInput.question("hoeveel getallen wil je genereren?: "));
 let aantalEven=0
 for(let i=0; i< aantaltegenererenGetallen; i++){
-    let r = random(1,10)
+    let aantalgegenereerde = random(1,10)
     console.log(r)
-    if(r % 2 ===0){
+    if(aantalgegenereerde % 2 ===0){
    aantalEven++
     }
 }
