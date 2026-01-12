@@ -8,21 +8,48 @@
 //  ***
 //   *
 
-import * as readline from 'node:readline/promises';
-import{stdin as input, stdout as output} from 'node:process';
-const userInput = readline.createInterface({input, output});
 
-let spaties = " "
-for (let j = 0; j < spaties; j++) {
-    regel += " ";
+function herhaal (karakter, aantal) {
+     let aantaltoegevoegd = 0;
+let lijn =""
+for(let i = 0; i<aantal;i++)
+    lijn += karakter
+  return lijn
 }
 
-let regel = "";
-for (let j = 0; j < 5; j++) {
-    regel += "*";
+function maaklijn(aantalspaties, aantalsterren) {
+let lijn =""
+lijn += herhaal(" ", aantalspaties)
+lijn += herhaal("*", aantalsterren)
+return lijn
 }
-console.log(regel)
 
+function tekendriehoek(hoogte, startspaties, extraspaties, startsterren, extrasterren){
+    let aantaltoetevoegenspaties = startspaties
+    let aantaltoetevoegensterren = startsterren
+    for(let i = 0; i<hoogte;++i){
 
+  console.log(maaklijn(aantaltoetevoegenspaties, aantaltoetevoegensterren));
 
-userInput.close();
+    aantaltoetevoegensterren += extrasterren;
+  aantaltoetevoegenspaties += extraspaties;
+}
+}
+
+function maaksimpeledriehoek(hoogte, shift =0, bottomup = false){
+if (!bottomup){
+    tekendriehoek(hoogte, hoogte-1+ shift, -1, 1,2)
+}else {
+    tekendriehoek(hoogte, shift, 1, 2*(hoogte+1)-3, -2)
+}
+}
+
+const hoogte = 4;
+
+// tekendriehoek(hoogte, hoogte-1,-1,1, 2)
+
+// tekendriehoek(hoogte-1, 1, 1, 2 * hoogte-3, -2)
+
+maaksimpeledriehoek(hoogte)
+maaksimpeledriehoek(hoogte-1, 1, true)
+process.exit ()

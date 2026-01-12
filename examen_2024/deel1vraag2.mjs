@@ -36,12 +36,12 @@ let rij = await userInput.question("rij of kolom: ");
 let verhoogrij = rij === "rij";
 
 for (let i = 1; i <= hoogte; i++) {
-    let lijn = "";
+    let lijn = "";                        //wat doet rij en wat doet lijn? verschil
     for (let j = 1; j <= hoogte; j++) {
         if (verhoogrij) {
-            lijn = lijn + i;
+            lijn = lijn + i; //verhoog i
         } else {
-            lijn = lijn + j;
+            lijn = lijn + j; // verhoog j
         }
     }
     console.log(lijn);

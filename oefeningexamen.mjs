@@ -31,17 +31,26 @@ const userInput = readline.createInterface({input, output});
 // 1 2 3
 // 1 2 3 4
 
-let i = 1
-while (i<=4){
-    let j = 1
-    let lijn= ""
-    while (j<=i){
-        lijn=lijn+j+" "
-        j++
+// let i = 1
+// while (i<=4){
+//     let j = 1
+//     let lijn= ""
+//     while (j<=i){
+//         lijn=lijn+j+" "
+//         j++
         
-    }
-    console.log(lijn)
-    i++
+//     }
+//     console.log(lijn)
+//     i++
+// }
+
+for(let i=1; i<=4; i++){
+  let lijn=""
+  for(let j =1; j<=i; j++){
+    lijn = lijn + j
+    
+  }
+  console.log(lijn)
 }
 
 

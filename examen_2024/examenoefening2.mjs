@@ -27,45 +27,76 @@ Output:
 54321
 */
 
+// import * as readline from "node:readline/promises";
+// import { stdin as input, stdout as output } from "node:process";
+// const userInput = readline.createInterface({ input, output });
+
+// let hoogte = 5; //parseInt(await userInput.question("Hoogte: "))
+// let breedte = hoogte
+// let links = false; //await userInput.question("start links? (ja/nee): ").toLowerCase === 'ja'
+// let piramide = "";
+
+// function maakString(karakter, aantal) {
+//   let resultaat = "";
+//   for (let i = 0; i < aantal; i++) {
+//     resultaat += karakter;
+//   }
+//   return resultaat;
+// }
+
+// function maakReeks(nummer, omgekeerd) {
+//   let reeks = "";
+//   if (omgekeerd) {
+//     for (let i = nummer; i >= 1; i--) {
+//       reeks += i;
+//     }
+//   } else {
+//     for (let i = 1; i <= nummer; i++) {
+//       reeks += i;
+//     }
+//   }
+//   return reeks;
+// }
+
+// for (let rij = 1; rij <= hoogte; rij++) {
+//   if (!links) {
+//     piramide += maakString(" ", breedte - rij);
+//   }
+//   piramide += maakReeks(rij, links);
+//   piramide += "\n";
+// }
+
+// console.log(piramide);
+
+// process.exit();
+
+
 import * as readline from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
+
 const userInput = readline.createInterface({ input, output });
 
-let hoogte = 5; //parseInt(await userInput.question("Hoogte: "))
-let breedte = hoogte
-let links = false; //await userInput.question("start links? (ja/nee): ").toLowerCase === 'ja'
-let piramide = "";
+let hoogte = parseInt(await rl.question("Hoogte: "));
+let start = await rl.question("Start (links/rechts): ");
 
-function maakString(karakter, aantal) {
-  let resultaat = "";
-  for (let i = 0; i < aantal; i++) {
-    resultaat += karakter;
-  }
-  return resultaat;
-}
+for (let i = 1; i <= hoogte; i++) {
+  let rij = "";
 
-function maakReeks(nummer, omgekeerd) {
-  let reeks = "";
-  if (omgekeerd) {
-    for (let i = nummer; i >= 1; i--) {
-      reeks += i;
+  if (start === "rechts") {
+    for (let s = 1; s <= hoogte - i; s++) {
+      rij += " ";
+    }
+    for (let j = i; j >= 1; j--) {
+      rij += j;
     }
   } else {
-    for (let i = 1; i <= nummer; i++) {
-      reeks += i;
+    for (let j = 1; j <= i; j++) {
+      rij += j;
     }
   }
-  return reeks;
+
+  console.log(rij);
 }
 
-for (let rij = 1; rij <= hoogte; rij++) {
-  if (!links) {
-    piramide += maakString(" ", breedte - rij);
-  }
-  piramide += maakReeks(rij, links);
-  piramide += "\n";
-}
-
-console.log(piramide);
-
+userInput.close();
 process.exit();
