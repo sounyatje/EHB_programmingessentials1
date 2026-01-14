@@ -59,6 +59,13 @@ function maakLijstLeeg(lijst) {
     return lijst
 }
 
+// function maakLijstLeeg(lijst) {
+//     for (let i = lijst.length; i > 0; i--) {
+//         lijst.pop(); // supprime toujours le dernier
+//     }
+//     return lijst;
+// }
+
 // Test
 lijst = voegItemToe(lijst, 'Melk');
 lijst = voegItemToe(lijst, 'Brood');

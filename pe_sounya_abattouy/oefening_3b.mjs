@@ -27,6 +27,13 @@ function maakLijstLeeg (lijst, punt){
     return lijst
 }
 
+// function maakLijstLeeg(lijst) {
+//     for (let i = lijst.length; i > 0; i--) {
+//         lijst.pop(); // supprime toujours le dernier
+//     }
+//     return lijst;
+// }
+
 lijst = voegPuntToe(lijst,15)
 lijst = voegPuntToe(lijst,9)
 lijst = voegPuntToe(lijst,12)

@@ -25,20 +25,23 @@ let som=0
 let aantalGetallen=0;
 let getal = parseFloat(await userInput.question("geef een getal in: "));
  while (getal !== 45){
-
- getal = parseFloat(await userInput.question("geef een getal in: "));
   
     if (getal <= 10) {
           som += getal
     aantalGetallen++;
-  }else {
-  console.log("Er werden geen getallen <= 10 ingegeven.");
-}
+  }
+
+getal = parseFloat(await userInput.question("geef een getal in: "));
  
  }
 
-let gemiddelde = som/aantalGetallen
-console.log(gemiddelde);
-
+ if (aantalGetallen === 0) {
+   console.log("Er werden geen getallen <= 10 ingegeven.");
+ } else {
+   let gemiddelde = som / aantalGetallen;
+   console.log(
+     "Gemiddelde van getallen kleiner of gelijk aan 10: " + gemiddelde
+   );
+ }
 
 process.exit();
