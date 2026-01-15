@@ -1,85 +1,73 @@
-// /* Vraag 3: Functies/Arrays (20 punten) */
+/* Vraag 5: Objecten/Functies
 
-// Schrijf de volgende functies die een array binnenkrijgen als parameter. 
-// Die array bevat een lijst van positieve getallen. De functies returnen een geupdatete lijst
+Schrijf een script voor een muntdeskundige.
 
-// voegPositiefGetalToe(lijst, getal): Voeg een getal toe aan het einde van de lijst. 
-// Zorg dat de functie het getal enkel toevoegt als het ingegeven getal hoger is dan 0
-// maakLijstLeeg(lijst): Maak de array leeg zodat deze niets meer bevat.
-// toonAantalEven(lijst): Deze functie toont het aantal even getallen (geheel deelbaar door 2) die zich in de lijst bevinden. 
-// Toon dat de lijst leeg is indien er helemaal geen getallen zijn
+Een muntdeskundige is geen verzamelaar van tic/tac, maar is iemand die geldstukken, munten, verzamelt en bestudeert.
 
-// Zorg ervoor dat de output overeenkomt met het onderstaande voorbeeld, de functies moet je op deze manier kunnen oproepen:
+Doe nu het volgende:
 
- //let lijst = []
-// lijst = voegPositiefGetalToe(lijst, 6);
-// lijst = voegPositiefGetalToe(lijst, -5);
- // Het getal -5 mag niet toegevoegd zijn.
-// lijst = voegPositiefGetalToe(lijst, 9);
-// lijst = voegPositiefGetalToe(lijst, 250);
-// lijst = voegPositiefGetalToe(lijst, 16);
+Schrijf een script waarin je gegevens van een munt aan de gebruiker vraagt en deze in een object bewaart. De gegevens die je moet verzamelen zijn:
+de naam van de munt, de herkomst, de waarde, het jaartal van uitgifte en kenmerken van de munt.
+Bewaar de kenmerken in een array.
+Zorg dat de gegevens van de munt daarna mooi geformatteerd worden weergegeven. Schrijf om dit te doen een functie waar je het munt-object meegeeft als parameter.
+De gebruiker moet in staat zijn om meerdere kenmerken in te voeren totdat de gebruiker "GEDAAN" invoert.
 
-// toonAantalEven(lijst);
+Voorbeelduitvoer:
 
- // Het resultaat hiervan moet op dit moment zijn:
-//Het aantal even getallen: 3
+Voer de naam van de munt in: 20 Belgische Frank
+Voer de herkomst van de munt in: België
+Voer de waarde van de munt in: 20 Frank
+Voer het jaartal van uitgifte van de munt in: 1865
 
-// lijst = maakLijstLeeg(lijst);
-// toonAantalEven(lijst);
+Voer de kenmerken van de munt in (typ "GEDAAN" om te stoppen):
+Beeld van koning Leopold II
+Munt in zilver
+Gedecoreerd met lauwertakens
+*/
 
-import * as readline from "node:readline/promises";
-import { stdin as input, stdout as output } from "node:process";
+import * as readline from 'node:readline/promises';
+import { stdin as input, stdout as output } from 'node:process';
+
 const userInput = readline.createInterface({ input, output });
 
-let lijst =[]
-
-function voegPositiefGetalToe(lijst, getal){
-    if (getal>0){
-    lijst.push(getal)
-    }
-    return lijst
+let munt = {
+    naam:"",
+    herkomst:"",
+    waarde:"",
+    jaartal:"",
+    kenmerken:[]
 }
 
-function toonLijst(lijst){
-    console.log(lijst)
-}
+let naam = (await userInput.question("naam: "));
+let herkomst  = (await userInput.question("herkomst: "));
+let waarde = parseFloat(await userInput.question("waarde: "));
+let jaartal = parseFloat(await userInput.question("jaartal: "));
 
-function toonAantalEven(lijst) {
-    if (lijst.length === 0) {
-        console.log("De lijst is leeg");
-        return;
-    }
-
-    let aantalEven = 0;
-
-    for (let getal of lijst) {
-        if (getal % 2 === 0) {
-            aantalEven++;
-        }
-    }
-
-    console.log("Het aantal even getallen: " + aantalEven);
-}
-
-function maakLijstLeeg(lijst){
-    while(lijst.length>0){
-        lijst.pop()
-    }
+let kenmerk = (await userInput.question("kenmerken: "));
+while(kenmerk !== 'gedaan'){
+munt.kenmerken.push(kenmerk)
+kenmerk = (await userInput.question("kenmerken: "));
 }
 
 
+function toonMunt(munt) {
+    console.log("Naam: " + munt.naam);
+    console.log("Herkomst: " + munt.herkomst);
+    console.log("Waarde: " + munt.waarde);
+    console.log("Jaartal: " + munt.jaartal);
+    console.log("Kenmerken:");
 
+    for (let kenmerk of munt.kenmerken) {
+        console.log("- " + kenmerk);
+    }
+}
 
-lijst = voegPositiefGetalToe(lijst, 6);
-lijst = voegPositiefGetalToe(lijst, -5);
-lijst = voegPositiefGetalToe(lijst, 9);
-lijst = voegPositiefGetalToe(lijst, 250);
-lijst = voegPositiefGetalToe(lijst, 16);
+munt.naam=naam
+munt.herkomst=herkomst
+munt.waarde=waarde
+munt.jaartal=jaartal
 
-toonLijst(lijst)
-toonAantalEven(lijst)
-maakLijstLeeg(lijst)
-toonLijst(lijst)
+toonMunt()
 
 userInput.close()
 process.exit()

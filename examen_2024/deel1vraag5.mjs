@@ -30,40 +30,87 @@ import { stdin as input, stdout as output } from 'node:process';
 
 const userInput = readline.createInterface({ input, output });
 
-async function leesMuntVanInput() {
-  let naam = await userInput.question("Voer de naam van de munt in:: ");
-  let herkomst = await userInput.question("Voer de herkomst van de munt in: ");
-  let waarde = await userInput.question("Voer de waarde van de munt in: ");
-  let jaartal = parseInt(
-    await userInput.question("Voer de jaartal van de munt in: ")
-  );
+// async function leesMuntVanInput() {
+//   let naam = await userInput.question("Voer de naam van de munt in:: ");
+//   let herkomst = await userInput.question("Voer de herkomst van de munt in: ");
+//   let waarde = await userInput.question("Voer de waarde van de munt in: ");
+//   let jaartal = parseInt(
+//     await userInput.question("Voer de jaartal van de munt in: ")
+//   );
 
-  let kenmerk = await userInput.question(
-    "Voer de kenmerken, typ gedaan om te stoppen: "
-  );
-  let kenmerken = [];
-  while (kenmerk !== "gedaan") {
-    kenmerken.push(kenmerk);
-    kenmerk = await userInput.question(
-      "Voer de kenmerken, typ gedaan om te stoppen: "
-    );
-  }
-  return {
-    naam: naam,
-    herkomst: herkomst,
-    waarde: waarde,
-    jaartal: jaartal,
-    kenmerken: kenmerken,
-  };
+//   let kenmerk = await userInput.question(
+//     "Voer de kenmerken, typ gedaan om te stoppen: "
+//   );
+//   let kenmerken = [];
+//   while (kenmerk !== "gedaan") {
+//     kenmerken.push(kenmerk);
+//     kenmerk = await userInput.question(
+//       "Voer de kenmerken, typ gedaan om te stoppen: "
+//     );
+//   }
+//   return {
+//     naam: naam,
+//     herkomst: herkomst,
+//     waarde: waarde,
+//     jaartal: jaartal,
+//     kenmerken: kenmerken,
+//   };
+// }
+
+// function drukMuntAf(munt) {
+// for (const key in munt){
+//     console.log(key + ': ' + munt[key])
+//  }
+// }
+
+// let munt = await leesMuntVanInput();
+// drukMuntAf(munt);
+
+// process.exit()
+
+import * as readline from 'node:readline/promises';
+import { stdin as input, stdout as output } from 'node:process';
+
+const userInput = readline.createInterface({ input, output });
+
+let munt = {
+    naam:"",
+    herkomst:"",
+    waarde:"",
+    jaartal:"",
+    kenmerken:[]
 }
 
-function drukMuntAf(munt) {
-for (const key in munt){
-    console.log(key + ': ' + munt[key])
- }
+let naam = (await userInput.question("naam: "));
+let herkomst  = (await userInput.question("herkomst: "));
+let waarde = parseFloat(await userInput.question("waarde: "));
+let jaartal = parseFloat(await userInput.question("jaartal: "));
+
+let kenmerk = (await userInput.question("kenmerken: "));
+while(kenmerk !== 'gedaan'){
+munt.kenmerken.push(kenmerk)
+kenmerk = (await userInput.question("kenmerken: "));
 }
 
-let munt = await leesMuntVanInput();
-drukMuntAf(munt);
 
+function toonMunt(munt) {
+    console.log("Naam: " + munt.naam);
+    console.log("Herkomst: " + munt.herkomst);
+    console.log("Waarde: " + munt.waarde);
+    console.log("Jaartal: " + munt.jaartal);
+    console.log("Kenmerken:");
+
+    for (let kenmerk of munt.kenmerken) {
+        console.log("- " + kenmerk);
+    }
+}
+
+munt.naam=naam
+munt.herkomst=herkomst
+munt.waarde=waarde
+munt.jaartal=jaartal
+
+toonMunt()
+
+userInput.close()
 process.exit()
