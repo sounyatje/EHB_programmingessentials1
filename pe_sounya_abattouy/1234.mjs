@@ -30,3 +30,56 @@
 import * as readline from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
 const userInput = readline.createInterface({ input, output });
+
+let lijst =[]
+
+function voegPositiefGetalToe(lijst, getal){
+    if (getal>0){
+    lijst.push(getal)
+    }
+    return lijst
+}
+
+function toonLijst(lijst){
+    console.log(lijst)
+}
+
+function toonAantalEven(lijst) {
+    if (lijst.length === 0) {
+        console.log("De lijst is leeg");
+        return;
+    }
+
+    let aantalEven = 0;
+
+    for (let getal of lijst) {
+        if (getal % 2 === 0) {
+            aantalEven++;
+        }
+    }
+
+    console.log("Het aantal even getallen: " + aantalEven);
+}
+
+function maakLijstLeeg(lijst){
+    while(lijst.length>0){
+        lijst.pop()
+    }
+}
+
+
+
+
+lijst = voegPositiefGetalToe(lijst, 6);
+lijst = voegPositiefGetalToe(lijst, -5);
+lijst = voegPositiefGetalToe(lijst, 9);
+lijst = voegPositiefGetalToe(lijst, 250);
+lijst = voegPositiefGetalToe(lijst, 16);
+
+toonLijst(lijst)
+toonAantalEven(lijst)
+maakLijstLeeg(lijst)
+toonLijst(lijst)
+
+userInput.close()
+process.exit()

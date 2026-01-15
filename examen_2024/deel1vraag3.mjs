@@ -45,24 +45,40 @@ function maakLijstLeeg(lijst) {
     return lijst
 }
 
-function toonAantalEven(lijst) {
+// function toonAantalEven(lijst) {
  
-    let aantalEven = 0
-    for (const value of lijst) {
-        if(value %2 ===0) {
-        aantalEven++
+//     let aantalEven = 0
+//     for (const value of lijst) {
+//         if(value %2 ===0) {
+//         aantalEven++
+//         }
+//     }
+//        if(lijst.length > 0){
+//         console.log("aantal even getallen: " + aantalEven)
+//         } else {
+//         console.log("momenteel is mijn lijst leeg")
+        
+//     }
+
+//     return aantalEven
+// }
+
+function toonAantalEven(lijst) {
+    if (lijst.length === 0) {
+        console.log("De lijst is leeg");
+        return;
+    }
+
+    let aantalEven = 0;
+
+    for (let getal of lijst) {
+        if (getal % 2 === 0) {
+            aantalEven++;
         }
     }
-       if(lijst.length > 0){
-        console.log("aantal even getallen: " + aantalEven)
-        } else {
-        console.log("momenteel is mijn lijst leeg")
-        
-    }
 
-    return aantalEven
+    console.log("Het aantal even getallen: " + aantalEven);
 }
-
 let lijst = []
 lijst = voegPositiefGetalToe(lijst, 6);
 lijst = voegPositiefGetalToe(lijst, -5);
