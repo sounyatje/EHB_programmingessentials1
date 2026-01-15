@@ -1,59 +1,93 @@
-/* Oefening 1: Logica (15 punten)
+// Oefening 3: Functies/Arrays
 
-Je kan de volgende code gebruiken om een willekeurig getal tussen min en max te genereren:
+/*
+Schrijf de volgende functies die een array binnenkrijgen als parameter, 
+de array stelt een lijst met je maandelijkse kosten voor. 
+De functies retourneren een geüpdatete lijst.
 
-function random(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+voegKostenToe(lijst, kost): Voeg een kost toe aan het einde van de lijst. 
+Zorg ervoor dat het ingegeven getal hoger is dan 0.
 
-Maak een kort script dat een gebruiker laat gokken naar een willekeurig getal. Vraag drie dingen aan de gebruiker:
+maakLegeLijstEen(lijst): Maakt de array leeg zodat deze niets meer bevat.
 
-- Het kleinst mogelijke getal
-- Het hoogst mogelijke getal
-- De gok van de gebruiker
+berekenTotaal(lijst): Druk de totale kosten af als een kommagetal.
 
-Genereer een willekeurig getal tussen het kleinste en hoogst mogelijke. 
-Indien de gok van de gebruiker niet tussen deze getallen ligt, stop het script met de melding dat de gok ongeldig is.
+Zorg ervoor dat de output overeenkomt met het onderstaande voorbeeld, 
+de functies moet je op deze manier kunnen oproepen:
 
-Als het getal er wel tussen ligt, zeg aan de gebruiker of het willekeurige getal lager, hoger of correct is dan het gekozen getal.
+lijst = voegKostenToe(lijst, 50.45);
+lijst = voegKostenToe(lijst, -1);
+lijst = voegKostenToe(lijst, 13);
 
-Herhaal dit tot de gebruiker het juiste getal gokt (of hij een ongeldige gok geeft).
+ Het resultaat hiervan moet op dit moment zijn:
+ De kost mag niet lager zijn dan 0
+
+lijst = voegKostenToe(lijst, 250);
+lijst = voegKostenToe(lijst, 15.99);
+
+berekenTotaal(lijst);
+
+Het resultaat hiervan moet op dit moment zijn:
+De totale maandelijkse kosten zijn momenteel: 326.49
+
+lijst = maakLijstLeeg(lijst);
+berekenTotaal(lijst);
+
+ Het resultaat hiervan moet op dit moment zijn:
+Momenteel is mijn lijst leeg
 */
 
-import * as readline from "node:readline/promises";
-import { stdin as input, stdout as output } from "node:process";
-const userInput = readline.createInterface({ input, output })
 
+// Oefening 3: Functies/Arrays
 
-function random(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+let lijst = [];
+
+// Voeg een kost toe aan de lijst
+function voegKostenToe(lijst, kost) {
+    if (kost > 0) {
+        lijst.push(kost);
+    } else {
+        console.log("De kost mag niet lager zijn dan 0");
+    }
+    return lijst;
 }
 
-let kleinste = parseInt(await userInput.question('kleinst: '));
-let grootste = parseInt(await userInput.question('grootste: '));
-let gok = parseInt(await userInput.question('gok: '));
 
-let antwoord = random(kleinste,grootste)
-console.log(antwoord)
+// Maak de lijst leeg met pop()
+function maakLijstLeeg(lijst) {
+    while (lijst.length > 0) {
+        lijst.pop();
+    }
+    return lijst;
+}
 
- do {
-     if (gok < kleinste || gok > grootste) {
-        console.log("Ongeldige gok. Het spel stopt.");
-        process.exit()
+// Bereken het totaal
+function berekenTotaal(lijst) {
+    if (lijst.length === 0) {
+        console.log("Momenteel is mijn lijst leeg");
+        return;
     }
 
-   if (gok < antwoord) {
-     console.log("het is hoger");
-   } else if (gok > antwoord) {
-     console.log("het is lager");
-   }
-   gok = parseInt(await userInput.question("gok: "));
+    let totaal = 0;
+    for (let i = 0; i < lijst.length; i++) {
+        totaal += lijst[i];
+    }
 
-   if(gok === antwoord) {
-    console.log("bravo het juiste antwoord is:  "+ antwoord)
-    process.exit()
-   }
- } while (gok !== antwoord);
+    console.log(`De totale maandelijkse kosten zijn momenteel: ${totaal.toFixed(2)}`);
+}
 
-userInput.close()
-process.exit()
+// ===== Test zoals in de opdracht =====
+
+lijst = voegKostenToe(lijst, 50.45);
+lijst = voegKostenToe(lijst, -1);
+lijst = voegKostenToe(lijst, 13);
+
+lijst = voegKostenToe(lijst, 250);
+lijst = voegKostenToe(lijst, 15.99);
+
+console.log(lijst) 
+
+berekenTotaal(lijst);
+
+lijst = maakLijstLeeg(lijst);
+berekenTotaal(lijst);

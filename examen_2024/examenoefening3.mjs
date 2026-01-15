@@ -38,56 +38,52 @@ Momenteel is mijn lijst leeg
 */
 let lijst = [];
 
-// Fonction pour copier une liste
-function kopierLijst(lijst) {
-    let kopie = [];
-    for (let i = 0; i < lijst.length; i++) {
-        kopie.push(lijst[i]);
-    }
-    return kopie;
-}
-
-// Fonction pour ajouter une dépense
+// Voeg een kost toe aan de lijst
 function voegKostenToe(lijst, kost) {
-    let kopie = kopierLijst(lijst);
     if (kost > 0) {
-        kopie.push(kost);
+        lijst.push(kost);
     } else {
         console.log("De kost mag niet lager zijn dan 0");
     }
-    return kopie;
+    return lijst;
 }
 
-// Fonction pour calculer le total
-function sum(lijst) {
+
+// Maak de lijst leeg met pop()
+function maakLijstLeeg(lijst) {
+    while (lijst.length > 0) {
+        lijst.pop();
+    }
+    return lijst;
+}
+
+// Bereken het totaal
+function berekenTotaal(lijst) {
+    if (lijst.length === 0) {
+        console.log("Momenteel is mijn lijst leeg");
+        return;
+    }
+
     let totaal = 0;
     for (let i = 0; i < lijst.length; i++) {
         totaal += lijst[i];
     }
-    return totaal;
+
+    console.log(`De totale maandelijkse kosten zijn momenteel: ${totaal.toFixed(2)}`);
 }
 
-// Fonction pour afficher le total
-function berekenTotaal(lijst) {
-    if (lijst.length > 0) {
-        let totaal = sum(lijst); // On appelle sum pour obtenir le total
-        console.log("De totale maandelijkse kosten zijn momenteel: " + totaal.toFixed(2));
-    } else {
-        console.log("Momenteel is mijn lijst leeg");
-    }
-}
+// ===== Test zoals in de opdracht =====
 
-function maakLijstLeeg (lijst){
-    return []
-}
-
-
-// Tests
+lijst = voegKostenToe(lijst, 50.45);
 lijst = voegKostenToe(lijst, -1);
 lijst = voegKostenToe(lijst, 13);
+
 lijst = voegKostenToe(lijst, 250);
 lijst = voegKostenToe(lijst, 15.99);
 
-berekenTotaal(lijst); // Devrait afficher 278.99
-lijst = maakLijstLeeg(lijst)
-berekenTotaal(lijst)
+console.log(lijst) 
+
+berekenTotaal(lijst);
+
+lijst = maakLijstLeeg(lijst);
+berekenTotaal(lijst);
