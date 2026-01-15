@@ -25,16 +25,14 @@ import * as readline from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
 const userInput = readline.createInterface({ input, output });
 
-function aantalCakes(suiker, boter, bloem, eieren) {
-  let cakes = Math.min(
-    suiker / 250,
-    boter / 250,
-   bloem / 250,
-   eieren / 4
- );
+function aantalCakes (suiker, boter, bloem, eieren){
+    let cakes = Math.min(
+suiker/250,
+bloem/250,
+boter/250,
+eieren/4)
 
-return Math.floor(cakes);
-
+return Math.floor(cakes)  //⚠️⚠️⚠️
 }
 
 
@@ -44,4 +42,8 @@ let bloem  = 600//parseInt(await userInput.question({ query: 'Hoeveelheid zelfri
 let eieren = 28//parseInt(await userInput.question({ query: 'Hoeveelheid eieren: ' }));7
 
 
-console.log("je kan " + aantalCakes(suiker, boter, bloem, eieren) + " maken ")
+let resultaat = aantalCakes(suiker, boter, bloem, eieren); //⚠️⚠️⚠️
+console.log(`Je kan ${resultaat} vier-vierden cakes maken.`);
+
+
+

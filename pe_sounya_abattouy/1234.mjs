@@ -1,93 +1,41 @@
-// Oefening 3: Functies/Arrays
+/* 
+oefening4: functies en logica
+Om een vier-vierden cake te maken heb je buiten een snuifje zout en een vanillestokje exact 4 ingrediënten nodig:
 
-/*
-Schrijf de volgende functies die een array binnenkrijgen als parameter, 
-de array stelt een lijst met je maandelijkse kosten voor. 
-De functies retourneren een geüpdatete lijst.
+250g suiker
+250g boter
+250g zelfrijzende bloem
+4 eieren
 
-voegKostenToe(lijst, kost): Voeg een kost toe aan het einde van de lijst. 
-Zorg ervoor dat het ingegeven getal hoger is dan 0.
+Vraag aan de gebruiker hoeveel hij heeft van elk van deze ingrediënten en toon daarna hoeveel cakes hij in totaal kan maken.
 
-maakLegeLijstEen(lijst): Maakt de array leeg zodat deze niets meer bevat.
+Voorzie minstens de functie aantalCakes die de vier ingrediënten binnenkrijgt en het aantal cakes die kunnen gemaakt worden terugstuurt.
 
-berekenTotaal(lijst): Druk de totale kosten af als een kommagetal.
+Voorbeelduitvoer:
 
-Zorg ervoor dat de output overeenkomt met het onderstaande voorbeeld, 
-de functies moet je op deze manier kunnen oproepen:
+Hoeveelheid suiker (g): 750
+Hoeveelheid boter (g): 1035
+Hoeveelheid zelfrijzende bloem (g): 600
+Hoeveelheid eieren: 28
 
-lijst = voegKostenToe(lijst, 50.45);
-lijst = voegKostenToe(lijst, -1);
-lijst = voegKostenToe(lijst, 13);
-
- Het resultaat hiervan moet op dit moment zijn:
- De kost mag niet lager zijn dan 0
-
-lijst = voegKostenToe(lijst, 250);
-lijst = voegKostenToe(lijst, 15.99);
-
-berekenTotaal(lijst);
-
-Het resultaat hiervan moet op dit moment zijn:
-De totale maandelijkse kosten zijn momenteel: 326.49
-
-lijst = maakLijstLeeg(lijst);
-berekenTotaal(lijst);
-
- Het resultaat hiervan moet op dit moment zijn:
-Momenteel is mijn lijst leeg
+Je kan 2 vier-vierden cakes maken.
 */
 
 
-// Oefening 3: Functies/Arrays
+function aantalCakes (suiker, boter, bloem, eieren){
+    let cakes = Math.min(
+suiker/250,
+bloem/250,
+boter/250,
+eieren/4)
 
-let lijst = [];
-
-// Voeg een kost toe aan de lijst
-function voegKostenToe(lijst, kost) {
-    if (kost > 0) {
-        lijst.push(kost);
-    } else {
-        console.log("De kost mag niet lager zijn dan 0");
-    }
-    return lijst;
+return Math.floor(cakes)  //⚠️⚠️⚠️
 }
 
+let suiker= 750
+let bloem = 600
+let boter = 1035
+let eieren = 28
 
-// Maak de lijst leeg met pop()
-function maakLijstLeeg(lijst) {
-    while (lijst.length > 0) {
-        lijst.pop();
-    }
-    return lijst;
-}
-
-// Bereken het totaal
-function berekenTotaal(lijst) {
-    if (lijst.length === 0) {
-        console.log("Momenteel is mijn lijst leeg");
-        return;
-    }
-
-    let totaal = 0;
-    for (let i = 0; i < lijst.length; i++) {
-        totaal += lijst[i];
-    }
-
-    console.log(`De totale maandelijkse kosten zijn momenteel: ${totaal.toFixed(2)}`);
-}
-
-// ===== Test zoals in de opdracht =====
-
-lijst = voegKostenToe(lijst, 50.45);
-lijst = voegKostenToe(lijst, -1);
-lijst = voegKostenToe(lijst, 13);
-
-lijst = voegKostenToe(lijst, 250);
-lijst = voegKostenToe(lijst, 15.99);
-
-console.log(lijst) 
-
-berekenTotaal(lijst);
-
-lijst = maakLijstLeeg(lijst);
-berekenTotaal(lijst);
+let resultaat = aantalCakes(suiker, boter, bloem, eieren); //⚠️⚠️⚠️
+console.log(`Je kan ${resultaat} vier-vierden cakes maken.`);
