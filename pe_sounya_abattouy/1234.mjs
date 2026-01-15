@@ -1,73 +1,59 @@
-/* Vraag 5: Objecten/Functies
+/* Oefening 1: Logica (15 punten)
 
-Schrijf een script voor een muntdeskundige.
+Je kan de volgende code gebruiken om een willekeurig getal tussen min en max te genereren:
 
-Een muntdeskundige is geen verzamelaar van tic/tac, maar is iemand die geldstukken, munten, verzamelt en bestudeert.
+function random(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-Doe nu het volgende:
+Maak een kort script dat een gebruiker laat gokken naar een willekeurig getal. Vraag drie dingen aan de gebruiker:
 
-Schrijf een script waarin je gegevens van een munt aan de gebruiker vraagt en deze in een object bewaart. De gegevens die je moet verzamelen zijn:
-de naam van de munt, de herkomst, de waarde, het jaartal van uitgifte en kenmerken van de munt.
-Bewaar de kenmerken in een array.
-Zorg dat de gegevens van de munt daarna mooi geformatteerd worden weergegeven. Schrijf om dit te doen een functie waar je het munt-object meegeeft als parameter.
-De gebruiker moet in staat zijn om meerdere kenmerken in te voeren totdat de gebruiker "GEDAAN" invoert.
+- Het kleinst mogelijke getal
+- Het hoogst mogelijke getal
+- De gok van de gebruiker
 
-Voorbeelduitvoer:
+Genereer een willekeurig getal tussen het kleinste en hoogst mogelijke. 
+Indien de gok van de gebruiker niet tussen deze getallen ligt, stop het script met de melding dat de gok ongeldig is.
 
-Voer de naam van de munt in: 20 Belgische Frank
-Voer de herkomst van de munt in: België
-Voer de waarde van de munt in: 20 Frank
-Voer het jaartal van uitgifte van de munt in: 1865
+Als het getal er wel tussen ligt, zeg aan de gebruiker of het willekeurige getal lager, hoger of correct is dan het gekozen getal.
 
-Voer de kenmerken van de munt in (typ "GEDAAN" om te stoppen):
-Beeld van koning Leopold II
-Munt in zilver
-Gedecoreerd met lauwertakens
+Herhaal dit tot de gebruiker het juiste getal gokt (of hij een ongeldige gok geeft).
 */
 
-import * as readline from 'node:readline/promises';
-import { stdin as input, stdout as output } from 'node:process';
+import * as readline from "node:readline/promises";
+import { stdin as input, stdout as output } from "node:process";
+const userInput = readline.createInterface({ input, output })
 
-const userInput = readline.createInterface({ input, output });
 
-let munt = {
-    naam:"",
-    herkomst:"",
-    waarde:"",
-    jaartal:"",
-    kenmerken:[]
+function random(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-let naam = (await userInput.question("naam: "));
-let herkomst  = (await userInput.question("herkomst: "));
-let waarde = parseFloat(await userInput.question("waarde: "));
-let jaartal = parseFloat(await userInput.question("jaartal: "));
+let kleinste = parseInt(await userInput.question('kleinst: '));
+let grootste = parseInt(await userInput.question('grootste: '));
+let gok = parseInt(await userInput.question('gok: '));
 
-let kenmerk = (await userInput.question("kenmerken: "));
-while(kenmerk !== 'gedaan'){
-munt.kenmerken.push(kenmerk)
-kenmerk = (await userInput.question("kenmerken: "));
-}
+let antwoord = random(kleinste,grootste)
+console.log(antwoord)
 
-
-function toonMunt(munt) {
-    console.log("Naam: " + munt.naam);
-    console.log("Herkomst: " + munt.herkomst);
-    console.log("Waarde: " + munt.waarde);
-    console.log("Jaartal: " + munt.jaartal);
-    console.log("Kenmerken:");
-
-    for (let kenmerk of munt.kenmerken) {
-        console.log("- " + kenmerk);
+ do {
+     if (gok < kleinste || gok > grootste) {
+        console.log("Ongeldige gok. Het spel stopt.");
+        process.exit()
     }
-}
 
-munt.naam=naam
-munt.herkomst=herkomst
-munt.waarde=waarde
-munt.jaartal=jaartal
+   if (gok < antwoord) {
+     console.log("het is hoger");
+   } else if (gok > antwoord) {
+     console.log("het is lager");
+   }
+   gok = parseInt(await userInput.question("gok: "));
 
-toonMunt()
+   if(gok === antwoord) {
+    console.log("bravo het juiste antwoord is:  "+ antwoord)
+    process.exit()
+   }
+ } while (gok !== antwoord);
 
 userInput.close()
 process.exit()
