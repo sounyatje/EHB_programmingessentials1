@@ -1,41 +1,59 @@
-/* 
-oefening4: functies en logica
-Om een vier-vierden cake te maken heb je buiten een snuifje zout en een vanillestokje exact 4 ingrediënten nodig:
+// Oefening 5: Objecten/Functies (15 punten)
+// Schrijf een script waarin je gegevens van een student aan de gebruiker vraagt en deze in een object  bewaart. De studentengegevens die je moet verzamelen zijn naam, opleiding, leeftijd en interesses.
 
-250g suiker
-250g boter
-250g zelfrijzende bloem
-4 eieren
+// De gebruiker moet in staat zijn om meerdere interesses in te voeren totdat de gebruiker "STOP" invoert.
 
-Vraag aan de gebruiker hoeveel hij heeft van elk van deze ingrediënten en toon daarna hoeveel cakes hij in totaal kan maken.
+// Zorg dat de gegevens van de student daarna mooi geformatteerd worden weergegeven. Schrijf om dit te doen een functie.
 
-Voorzie minstens de functie aantalCakes die de vier ingrediënten binnenkrijgt en het aantal cakes die kunnen gemaakt worden terugstuurt.
+// Voorbeelduitvoer
 
-Voorbeelduitvoer:
+// Voer de naam van de student in: John Doe
+// Voer de opleiding van de student in: Toegepaste Informatica
+// Voer de leeftijd van de student in: 20
 
-Hoeveelheid suiker (g): 750
-Hoeveelheid boter (g): 1035
-Hoeveelheid zelfrijzende bloem (g): 600
-Hoeveelheid eieren: 28
+// Voer de interesses van de student in (typ 'STOP' om te stoppen):
+// Programming
+// Gaming
+// Reading
+// STOP
 
-Je kan 2 vier-vierden cakes maken.
-*/
+// Output van de functie:
 
+// Naam: John Doe
+// Opleiding: Toegepaste Informatica
+// Leeftijd: 20
+// Interesses: Programming, Gaming, Reading
 
-function aantalCakes (suiker, boter, bloem, eieren){
-    let cakes = Math.min(
-suiker/250,
-bloem/250,
-boter/250,
-eieren/4)
+import * as readline from 'node:readline/promises';
+import { stdin as input, stdout as output } from 'node:process';
+const userInput = readline.createInterface({ input, output });
 
-return Math.floor(cakes)  //⚠️⚠️⚠️
+let student = {
+    naam:"",
+    opleiding:"",
+    leeftijd:"",
+    interesses:[]
 }
 
-let suiker= 750
-let bloem = 600
-let boter = 1035
-let eieren = 28
+let naam = await userInput.question("naam: ")
+let opleiding = await userInput.question("opleiding: ")
+let leeftijd = await userInput.question("leeftijd: ")
 
-let resultaat = aantalCakes(suiker, boter, bloem, eieren); //⚠️⚠️⚠️
-console.log(`Je kan ${resultaat} vier-vierden cakes maken.`);
+let interesse=await userInput.question("interesse?: ")
+while(interesse !== "stop"){
+    student.interesses.push(interesse)
+     interesse=await userInput.question("interesse?: ")
+}
+
+student.naam = naam
+student.opleiding = opleiding
+student.leeftijd = leeftijd
+
+function toonStudent (student) {
+    console.log(student.naam)
+    console.log(student.opleiding)
+    console.log(student.leeftijd)
+    console.log(student.interesses)
+}
+
+toonStudent(student)

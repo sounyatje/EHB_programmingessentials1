@@ -53,6 +53,8 @@ student.naam = naam;
 student.opleiding = opleiding;
 student.leeftijd = leeftijd;
 
+
+
 // Student tonen
 function toonStudent(student) {
     console.log("Naam:", student.naam);

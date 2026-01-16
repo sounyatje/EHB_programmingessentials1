@@ -26,7 +26,7 @@ import { stdin as input, stdout as output } from "node:process";
 const userInput = readline.createInterface({ input, output });
 
 function aantalCakes (suiker, boter, bloem, eieren){
-    let cakes = Math.min(
+    let cakes = Math.min(  //⚠️⚠️⚠️
 suiker/250,
 bloem/250,
 boter/250,

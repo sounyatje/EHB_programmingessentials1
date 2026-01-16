@@ -67,32 +67,32 @@ Herhaal dit tot de gebruiker het juiste getal gokt (of hij een ongeldige gok gee
   function random(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-  
-  let kleinste = parseInt(await userInput.question('kleinst: '));
-  let grootste = parseInt(await userInput.question('grootste: '));
-  let gok = parseInt(await userInput.question('gok: '));
-  
-  let antwoord = random(kleinste,grootste)
-  console.log(antwoord)
-  
-   do {
-       if (gok < kleinste || gok > grootste) {
-          console.log("Ongeldige gok. Het spel stopt.");
-          process.exit()
-      }
-  
-     if (gok < antwoord) {
-       console.log("het is hoger");
-     } else if (gok > antwoord) {
-       console.log("het is lager");
-     }
-     gok = parseInt(await userInput.question("gok: "));
-  
-     if(gok === antwoord) {
-      console.log("bravo het juiste antwoord is:  "+ antwoord)
-      process.exit()
-     }
-   } while (gok !== antwoord);
-  
-  userInput.close()
-  process.exit()
+
+  let kleinste = parseInt(await userInput.question("kleinst: "));
+  let grootste = parseInt(await userInput.question("grootste: "));
+  let gok = parseInt(await userInput.question("gok: "));
+
+  let antwoord = random(kleinste, grootste);
+  console.log(antwoord);
+
+  do {
+    if (gok < kleinste || gok > grootste) {
+      console.log("Ongeldige gok. Het spel stopt.");
+      process.exit();
+    }
+
+    if (gok === antwoord) {
+      console.log("bravo het juiste antwoord is:  " + antwoord);
+      process.exit();
+    }
+
+    if (gok < antwoord) {
+      console.log("het is hoger");
+    } else if (gok > antwoord) {
+      console.log("het is lager");
+    }
+    gok = parseInt(await userInput.question("gok: "));
+  } while (gok !== antwoord);
+
+  userInput.close();
+  process.exit();
