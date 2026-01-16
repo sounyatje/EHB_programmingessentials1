@@ -76,8 +76,8 @@ import { stdin as input, stdout as output } from "node:process";
 
 const userInput = readline.createInterface({ input, output });
 
-let hoogte = parseInt(await rl.question("Hoogte: "));
-let start = await rl.question("Start (links/rechts): ");
+let hoogte = parseInt(await userInput.question("Hoogte: "));
+let start = await userInput.question("Start (links/rechts): ");
 
 for (let i = 1; i <= hoogte; i++) {
   let rij = "";
@@ -86,7 +86,7 @@ for (let i = 1; i <= hoogte; i++) {
     for (let s = 1; s <= hoogte - i; s++) {
       rij += " ";
     }
-    for (let j = i; j >= 1; j--) {
+    for (let j = i; j >= 1; j--) { //⚠️⚠️⚠️
       rij += j;
     }
   } else {
